@@ -26,9 +26,12 @@ Cada área tiene su propia base de datos SQLite (simulando silos transaccionales
 
 ## 🏗️ Arquitectura
 
-```
-CSV crudos → Bases de datos de área (silos) → Staging → Dimensiones/Hechos → Data Warehouse
-```
+La plataforma de datos de Andes Banking AR está diseñada como un flujo end-to-end que parte de sistemas operacionales simulados, atraviesa las capas de ingestión, staging, transformación y calidad, y termina en un Data Warehouse preparado para análisis y reporting.
+
+<p align="center">
+  <img src="docs/assets/architecture/architecture-overview.png" alt="Andes Banking AR - Architecture Overview">
+</p>
+
 
 - **Generadores batch** crean datos sintéticos con errores intencionales.
 - **Generadores diarios incrementales** simulan la operación bancaria real.
