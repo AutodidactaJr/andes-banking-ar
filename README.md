@@ -1,7 +1,5 @@
 ## 📄 README.md para Andes Banking AR
 
-Crea un archivo llamado `README.md` en la raíz del proyecto y pega el siguiente contenido:
-
 ```markdown
 # 🏦 Andes Banking AR
 
