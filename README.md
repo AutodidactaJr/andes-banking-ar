@@ -32,6 +32,24 @@ El proyecto parte de múltiples sistemas operacionales simulados y construye un 
 
 > **Objetivo:** demostrar cómo una organización puede evolucionar desde datos distribuidos y sistemas operacionales independientes hacia una plataforma de datos centralizada, confiable y preparada para análisis.
 
+## 💼 Problema de negocio
+
+Andes Bank representa un banco tradicional con información distribuida entre múltiples áreas operacionales. Cada dominio genera y administra sus propios datos, dificultando la consolidación de información y el análisis integral del negocio.
+
+### El desafío
+
+La organización necesita transformar datos aislados en información confiable y centralizada para facilitar:
+
+* 📊 **Reporting y análisis** del negocio.
+* 🕒 **Análisis histórico** de clientes y operaciones.
+* 🔍 **Trazabilidad y auditoría** de los procesos de datos.
+* 🛡️ **Detección de errores e inconsistencias** antes de consumir la información.
+* 🔗 **Integración de múltiples dominios** en una única plataforma.
+
+### La solución
+
+Andes Banking AR construye una plataforma de datos end-to-end que integra los distintos dominios operacionales, aplica procesos de ingestión, transformación y validación, y consolida la información en un **Data Warehouse dimensional** preparado para análisis y reporting.
+
 ## 📖 Descripción
 
 Andes Banking AR es un proyecto educativo que simula la modernización de datos de un banco tradicional argentino. La fase on-premise implementa un **Data Warehouse central** que integra datos de seis áreas departamentales:
