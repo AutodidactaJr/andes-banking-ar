@@ -1,0 +1,25 @@
+# Bases de datos SQLite generadas
+data/*.db
+data/databases/*.db
+
+# Archivos CSV generados (opcional si quieres subir datos, quita las líneas)
+data/raw/**/*.csv
+
+# Archivos de control
+data/control/*.txt
+
+# Archivos de reporte de calidad
+docs/reportes_calidad/*.csv
+docs/reportes_calidad/*.html
+
+# Entornos virtuales
+venv/
+.venv/
+
+# Archivos de caché de Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Archivos de Visual Studio Code
+.vscode/
