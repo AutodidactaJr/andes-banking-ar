@@ -138,8 +138,43 @@ DIM_TIEMPO ─────── FACT_TRANSACCION ─────── DIM_CUEN
 ## 🛡️ Data Quality
 
 La calidad de los datos se controla a lo largo del pipeline para detectar
-errores antes de que la información llegue a las capas de consumo.
+errores e inconsistencias antes de que la información llegue a las capas
+de consumo.
 
 <p align="center">
   <img src="docs/assets/data-quality/data-quality.png" alt="Andes Banking AR - Data Quality Framework">
 </p>
+
+### Reglas de calidad
+
+El framework implementa validaciones sobre las capas de staging y Data Warehouse:
+
+| Regla | Objetivo |
+|---|---|
+| **Nulls** | Detectar campos críticos sin información. |
+| **Duplicates** | Identificar registros duplicados según las reglas del negocio. |
+| **Referential Integrity** | Detectar claves foráneas sin correspondencia. |
+| **Business Rules** | Validar condiciones específicas del negocio bancario. |
+| **Completeness** | Controlar que los campos requeridos estén correctamente poblados. |
+| **Consistency** | Detectar valores, formatos o relaciones inconsistentes. |
+
+### Validación del pipeline
+
+La calidad se aplica en diferentes puntos del flujo:
+
+```text
+Sources
+   ↓
+Staging
+   ↓
+Validaciones
+   ↓
+Transformaciones
+   ↓
+Dimensiones / Hechos
+   ↓
+Validaciones finales
+   ↓
+Data Warehouse
+```
+Data Warehouse final: 0 problemas de calidad
