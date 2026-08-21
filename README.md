@@ -101,3 +101,36 @@ El proyecto también simula la operación diaria del banco mediante nuevas carga
 **Nuevos datos → Actualización de sources → Staging → Dimensiones → Hechos → Data Warehouse actualizado**
 
 Esto permite demostrar un escenario más cercano a una operación real, donde el Data Warehouse no se construye solamente una vez, sino que recibe nuevas versiones de los datos y conserva el historial necesario para el análisis.
+
+## 🗃️ Modelo de datos
+
+Andes Banking AR utiliza un **modelo dimensional basado en Kimball**, diseñado para separar las métricas de negocio de los atributos descriptivos utilizados para analizarlas.
+
+El Data Warehouse organiza la información principalmente en:
+
+- **Dimensiones (`dim_*`)** — describen entidades y contextos del negocio.
+- **Hechos (`fact_*`)** — almacenan eventos y métricas medibles.
+- **Claves sustitutas (`*_sk`)** — permiten controlar la integración y el historial dentro del Data Warehouse.
+- **Claves de negocio (`*_id`)** — mantienen la referencia al identificador proveniente de los sistemas fuente.
+
+<p align="center">
+  <img src="docs/assets/data-model/data-model.png" alt="Andes Banking AR - Dimensional Data Model">
+</p>
+
+### ⭐ Modelo estrella
+
+Las tablas de hechos se relacionan con dimensiones conformadas para permitir análisis por diferentes perspectivas del negocio, como:
+
+**Cliente · Cuenta · Sucursal · Producto · Tiempo · Canal · Empleado**
+
+Por ejemplo:
+
+```text
+                    DIM_CLIENTE
+                         │
+                         │
+DIM_TIEMPO ─────── FACT_TRANSACCION ─────── DIM_CUENTA
+                         │
+                         │
+                    DIM_SUCURSAL
+
