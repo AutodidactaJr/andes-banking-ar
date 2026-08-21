@@ -11,6 +11,27 @@
 ![SCD2](https://img.shields.io/badge/SCD%20Tipo%202-Dimensiones-green)
 ![Calidad](https://img.shields.io/badge/Calidad%20de%20datos-Framework-red)
 
+## 🎯 El proyecto en 30 segundos
+
+**Andes Banking AR** es un caso de estudio de **Data Engineering end-to-end** que simula la construcción y evolución de una plataforma de datos para un banco tradicional argentino.
+
+El proyecto parte de múltiples sistemas operacionales simulados y construye un flujo completo de datos:
+
+**Generación de datos → Fuentes operacionales → Ingestión → Staging → ETL → Data Quality → Data Warehouse → Analytics**
+
+### ¿Qué demuestra?
+
+* 🏦 **Integración de múltiples dominios bancarios** en una plataforma centralizada.
+* 🐍 **Generación de datos sintéticos** batch e incrementales para simular una operación bancaria continua.
+* 🔄 **Procesos ETL** para extracción, transformación, limpieza y carga.
+* 🗃️ **Data Warehouse dimensional** basado en principios de modelado Kimball.
+* 🧬 **SCD Type 2** para conservar el historial de cambios en dimensiones.
+* 🛡️ **Data Quality Framework** para detectar errores, inconsistencias y problemas de integridad.
+* 📝 **Auditoría y trazabilidad** de los procesos de carga.
+* ☁️ **Arquitectura preparada para evolucionar** desde un entorno on-premise hacia una plataforma híbrida y cloud.
+
+> **Objetivo:** demostrar cómo una organización puede evolucionar desde datos distribuidos y sistemas operacionales independientes hacia una plataforma de datos centralizada, confiable y preparada para análisis.
+
 ## 📖 Descripción
 
 Andes Banking AR es un proyecto educativo que simula la modernización de datos de un banco tradicional argentino. La fase on-premise implementa un **Data Warehouse central** que integra datos de seis áreas departamentales:
