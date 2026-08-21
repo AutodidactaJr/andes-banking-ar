@@ -71,82 +71,33 @@ La plataforma de datos de Andes Banking AR está diseñada como un flujo end-to-
   <img src="docs/assets/architecture/architecture-overview.png" alt="Andes Banking AR - Architecture Overview">
 </p>
 
+## 🔄 ETL Pipeline
 
-- **Generadores batch** crean datos sintéticos con errores intencionales.
-- **Generadores diarios incrementales** simulan la operación bancaria real.
-- **ETL** extrae, transforma y carga los datos en el DW.
-- **Framework de calidad** valida staging y DW final.
+El pipeline de Andes Banking AR procesa datos sintéticos provenientes de múltiples sistemas operacionales simulados y los transforma progresivamente hasta obtener información estructurada en el Data Warehouse.
 
-## 🛠️ Tecnologías
+### Flujo principal
 
-- Python 3.10+
-- SQLite 3.x
-- Windows CMD
-- Git / GitHub
+**Generación → Sources → Staging → Transformación → Data Warehouse → Analytics**
 
-## 📁 Estructura del repositorio
+<p align="center">
+  <img src="docs/assets/pipelines/etl-pipeline.png" alt="Andes Banking AR - End-to-End ETL Pipeline">
+</p>
 
-```
-andes-banking-ar/
-├── docs/                         # Documentación
-├── python/etl/                   # Scripts ETL
-├── sql/                          # Scripts SQL (esquemas, vistas, calidad)
-├── src/andes_bank/generators/    # Generadores de datos
-├── run_all.bat                   # Reconstrucción total
-└── README.md
-```
+### Carga inicial
 
-## 🚀 Cómo reconstruir el proyecto
+La primera ejecución construye el entorno completo:
 
-1. Clonar el repositorio:
-   ```cmd
-   git clone https://github.com/AutodidactaJr/andes-banking-ar.git
-   cd andes-banking-ar
-   ```
+1. **Generación de datos** — Python crea datos maestros y transaccionales sintéticos.
+2. **Carga de fuentes** — Los datos se distribuyen entre los distintos sistemas operacionales SQLite.
+3. **Staging** — Se extraen y estandarizan los datos en tablas `stg_*`.
+4. **Dimensiones** — Se procesan las dimensiones y la historización mediante SCD Type 2.
+5. **Hechos** — Se cargan las tablas de hechos y sus relaciones con las dimensiones.
+6. **Data Quality** — Se ejecutan reglas de validación sobre staging y Data Warehouse.
 
-2. Ejecutar el flujo completo:
-   ```cmd
-   run_all.bat
-   ```
+### Cargas incrementales
 
-   El batch:
-   - Genera datos maestros batch.
-   - Carga bases de datos de área.
-   - Crea el Data Warehouse.
-   - Ejecuta ETL (staging, dimensiones, hechos).
-   - Genera datos diarios incrementales.
-   - Ejecuta calidad de datos final.
+El proyecto también simula la operación diaria del banco mediante nuevas cargas incrementales.
 
-3. Verificar resultados:
-   ```
-   Data Warehouse final: 0 problemas de calidad.
-   ```
+**Nuevos datos → Actualización de sources → Staging → Dimensiones → Hechos → Data Warehouse actualizado**
 
-## 🧪 Calidad de datos
-
-El framework de calidad valida tanto **staging** (errores crudos esperados) como el **Data Warehouse final** (debe tener 0 problemas). Reglas incluyen:
-
-- Nulos en campos críticos
-- Duplicados
-- Saldos negativos en cajas de ahorro
-- Montos cero en transacciones
-- Referencias inexistentes
-
-## 📚 Documentación
-
-- [Modelo de datos](docs/modelo_datos.md)
-- [Narrativa de evolución](docs/narrativa_evolucion_etl.md)
-- [Linaje de datos](docs/linaje_datos.md)
-- [Guía de reconstrucción](docs/guia_reconstruccion.md)
-- [Tablas omitidas](docs/tablas_omitidas.md)
-- [SQL Server + SSIS](docs/sql_server_ssis.md)
-- [Arquitectura AWS](docs/migracion_aws_arquitectura.md)
-
-## 👤 Autor
-
-**AutodidactaJr**  
-GitHub: [https://github.com/AutodidactaJr](https://github.com/AutodidactaJr)
-
-## 📝 Licencia
-
-Este proyecto es de uso educativo. Los datos son sintéticos y no representan información real de clientes.
+Esto permite demostrar un escenario más cercano a una operación real, donde el Data Warehouse no se construye solamente una vez, sino que recibe nuevas versiones de los datos y conserva el historial necesario para el análisis.
