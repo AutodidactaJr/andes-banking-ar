@@ -133,4 +133,13 @@ DIM_TIEMPO ─────── FACT_TRANSACCION ─────── DIM_CUEN
                          │
                          │
                     DIM_SUCURSAL
+```
 
+## 🛡️ Data Quality
+
+La calidad de los datos se controla a lo largo del pipeline para detectar
+errores antes de que la información llegue a las capas de consumo.
+
+<p align="center">
+  <img src="docs/assets/data-quality/data-quality.png" alt="Andes Banking AR - Data Quality Framework">
+</p>
