@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/assets/branding/andes-banking-banner.png" alt="Andes Banking AR - End-to-End Data Platform">
+</p>
+
 ## 📄 README.md para Andes Banking AR
 
 ```markdown
