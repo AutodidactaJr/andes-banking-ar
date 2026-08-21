@@ -4,7 +4,7 @@
 
 # 🏦 Andes Banking AR
 
-**Data Warehouse on-premise para un banco simulado, construido con Python y SQLite.**
+**End-to-End Data Platform para simular la evolución de datos de un banco tradicional argentino.**
 
 ![On-Premise](https://img.shields.io/badge/On--Premise-SQLite%20%2B%20Python-blue)
 ![ETL](https://img.shields.io/badge/ETL-Python-orange)
